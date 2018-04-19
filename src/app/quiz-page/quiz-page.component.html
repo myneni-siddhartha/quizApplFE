@@ -1,0 +1,13 @@
+<div style="text-align: center">
+  <h1>{{presentQuestion.question}}</h1>
+  <h2>options</h2>
+
+
+  <!-- <h5 > {{presentQuestion.answer}}</h5> -->
+  <div *ngFor="let opt of presentQuestion.options">
+    <input type="radio" name="option123" value="{{opt.optionNumber}}">  {{opt.answer}}
+  </div>
+
+  <button type="button" (click)="submit()">submit answer</button>
+  <br>
+</div>
