@@ -44,7 +44,7 @@ export class NewUserPageComponent implements OnInit {
       .subscribe((data) => {
         if (data._id) {
           console.log(data)
-          alert("added the new user succesfully")
+          // alert("added the new user succesfully")
           this.goToQuiz();
           sessionStorage.setItem('ID', data._id);
         }
