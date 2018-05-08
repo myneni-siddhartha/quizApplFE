@@ -11,30 +11,36 @@ import { Location } from '@angular/common'
 })
 export class ViewAnswersPageComponent implements OnInit {
 
-  allQuestions:any;
+  allQuestions: any;
   constructor(
     private quizService: QuizServiceService,
-    private location : Location
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.getQuestionsAttemptedByUser()
   }
-  getQuestionsAttemptedByUser(){
+  getQuestionsAttemptedByUser() {
     this.quizService.getQuestionsAttemptedByUser()
-    .subscribe((data)=>{
-      if(data.questions.length){
-        this.allQuestions = data.questions;
-        console.log(">>",this.allQuestions)
-      }
-      else{
-        console.log("some error")
-      }
-    })
+      .subscribe((data) => {
+        if (data.questions.length) {
+          this.allQuestions = data.questions;
+          console.log(">>", this.allQuestions)
+        }
+        else {
+          console.log("some error")
+        }
+      })
   }
 
   resultsPage() {
     this.location.back()
+  }
+
+  logout() {
+    sessionStorage.clear();
+    this.router.navigateByUrl('');
   }
 
 }

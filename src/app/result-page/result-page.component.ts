@@ -13,7 +13,7 @@ export class ResultPageComponent implements OnInit {
     numberOfCorrectEntries: 0,
     numberOfEntries: 0
   };
-  percentage:any;
+  percentage: any;
   constructor(
     private quizService: QuizServiceService,
     private router: Router
@@ -26,21 +26,26 @@ export class ResultPageComponent implements OnInit {
   viewResults() {
     console.log("asdas")
     this.quizService.getMarksOfUser()
-    .subscribe((data)=>{
-      if(data.numberOfCorrectEntries){
-        this.result.numberOfCorrectEntries = data.numberOfCorrectEntries;
-        this.result.numberOfEntries = data.numberOfEntries;
-        this.percentage = (this.result.numberOfCorrectEntries/this.result.numberOfEntries)*100;
-        console.log(this.result,"",this.percentage)
-      }
-      else{
-        console.log("some error")
-      }
-    })
+      .subscribe((data) => {
+        if (data.numberOfCorrectEntries) {
+          this.result.numberOfCorrectEntries = data.numberOfCorrectEntries;
+          this.result.numberOfEntries = data.numberOfEntries;
+          this.percentage = (this.result.numberOfCorrectEntries / this.result.numberOfEntries) * 100;
+          console.log(this.result, "", this.percentage)
+        }
+        else {
+          console.log("some error")
+        }
+      })
   }
 
-  viewAnswers(){
+  viewAnswers() {
     this.router.navigateByUrl('/answers')
+  }
+
+  logout() {
+    sessionStorage.clear();
+    this.router.navigateByUrl('');
   }
 
 }
